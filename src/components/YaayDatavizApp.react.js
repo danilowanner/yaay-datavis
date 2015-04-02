@@ -23,11 +23,7 @@ function getStateFromSocket(data) {
     },
     transport: transportDate ? { minutes: getTransportInMin(transportDate), departure: transportDate } :
       { minutes: "–", departure: transportDate },
-    watch: {
-      hours: time.getHours(),
-      minutes: time.getMinutes(),
-      seconds: time.getSeconds()
-    },
+    watch: data.watch,
     rhine: { temp: data.rhine && data.rhine.temperature ? data.rhine.temperature : "–" },
     air: {
       co2: data.netatmo && data.netatmo.co2 ? data.netatmo.co2 : "–",
