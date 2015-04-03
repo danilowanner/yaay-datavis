@@ -1,6 +1,6 @@
 {
-  "name": "yaay-dataviz",
-  "version": "0.2.0",
+  "name": "yaay-datavis",
+  "version": "1.0.0",
   "description": "Yaay data visualization with React modules using JSX",
   "main": "src/app.js",
   "dependencies": {
@@ -19,8 +19,8 @@
     ]
   },
   "scripts": {
-    "watch": "watchify src/app.js -o public/js/yaay-dataviz.js -v",
-    "browserify": "browserify src/app.js | uglifyjs --compress > public/js/yaay-dataviz.min.js",
+    "watch": "watchify src/app.js -o public/js/yaay-datavis.js -v",
+    "browserify": "browserify src/app.js | uglifyjs --compress > public/js/yaay-datavis.min.js",
     "build": "npm run browserify "
   },
   "author": "Danilo Wanner",

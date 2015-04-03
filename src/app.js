@@ -1,8 +1,8 @@
 var React = require('react');
 
-var YaayDatavizApp = require('./components/YaayDatavizApp.react');
+var YaayDatavisApp = require('./components/YaayDatavisApp.react');
 
 React.render(
-  <YaayDatavizApp />,
-  document.getElementById('yaay-dataviz')
+  <YaayDatavisApp />,
+  document.getElementById('yaay-datavis')
 );
