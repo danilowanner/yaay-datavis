@@ -9,10 +9,13 @@ var Air = require('./Air.react.js');
 var Noise = require('./Noise.react.js');
 
 var rowStyle = { fontSize: "1.25em" };
-var time = new Date();
+var appTime = new Date();
+var baselToLocalTzOffset = 0;
 
 function getStateFromSocket(data) {
-  time = new Date(data.date);
+  appTime = new Date(data.date);
+  baselToLocalTzOffset = data.baselTzOffset + appTime.getTimezoneOffset();
+
   var transportDate = data.transport ? new Date(data.transport.departure) : undefined;
 
   return {
@@ -23,7 +26,7 @@ function getStateFromSocket(data) {
     },
     transport: transportDate ? { minutes: getTransportInMin(transportDate), departure: transportDate } :
       { minutes: "–", departure: transportDate },
-    watch: data.watch,
+    watch: getBaselWatch(),
     rhine: { temp: data.rhine && data.rhine.temperature ? data.rhine.temperature : "–" },
     air: {
       co2: data.netatmo && data.netatmo.co2 ? data.netatmo.co2 : "–",
@@ -47,8 +50,13 @@ function getPlaceholderState() {
   }
 };
 
+function getBaselWatch() {
+  var baselTime = new Date(appTime.getTime() + baselToLocalTzOffset*60*1000)
+  return { hours: baselTime.getHours(), minutes: baselTime.getMinutes() }
+}
+
 function getTransportInMin(departure) {
-  return Math.round((departure.getTime()-time.getTime())/60000);
+  return Math.round((departure.getTime()-appTime.getTime())/60000);
 }
 
 var YaayDatavizApp = React.createClass({
@@ -97,16 +105,13 @@ var YaayDatavizApp = React.createClass({
     var now = new Date(),
         diff = this._lastTick ? now.getTime() - this._lastTick.getTime() : 1000;
 
-    // Update time object to represent the calculated new server time
-    time = new Date(time.getTime() + diff);
+    // Update appTime object to represent the extrapolated new server time
+    appTime = new Date(appTime.getTime() + diff);
     this._lastTick = now;
 
     // Update watch and transport state
-    var minutes = time.getMinutes();
-    var hours = time.getHours();
-
     this.setState({
-      watch: { hours: hours, minutes: minutes},
+      watch: getBaselWatch(),
       transport: { minutes: this.state.transport.departure ? getTransportInMin( this.state.transport.departure ) : "–", departure: this.state.transport.departure }
     });
   }
