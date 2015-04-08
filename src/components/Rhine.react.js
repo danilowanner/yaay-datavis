@@ -12,7 +12,7 @@ var Rhine = React.createClass({
   	  <div>
     	  <div className="col col-1 col-height-1 col-mint col-lg-offset-2 ">
     	    <div className={this.iconClass+" center"} style={this.iconStyle}></div>
-    	    <span className="center" style={this.textStyle}>{this.props.temp} °C</span>
+    	    <span className="center" style={this.textStyle}>{this.props.temp}° C</span>
     	  </div>
     	  <div className="col col-1 col-height-1 col-white">
     	  	<span className="center">Rhine <br/>temperature</span>
