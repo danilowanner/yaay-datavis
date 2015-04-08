@@ -1,6 +1,6 @@
 {
   "name": "yaay-datavis",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Yaay data visualization with React modules using JSX",
   "main": "src/app.js",
   "dependencies": {
