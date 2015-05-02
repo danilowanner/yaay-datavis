@@ -1,14 +1,8 @@
 var React = require('react');
 var io = require('socket.io-client');
 
-var Weather = require('./Weather.react.js');
-var Transport = require('./Transport.react.js');
-var Watch = require('./Watch.react.js');
-var Rhine = require('./Rhine.react.js');
-var Air = require('./Air.react.js');
-var Noise = require('./Noise.react.js');
+var YaayDatavis = require('./YaayDatavis.react');
 
-var rowStyle = { fontSize: "1.25em" };
 var appTime = new Date();
 var baselToLocalTzOffset = 0;
 
@@ -30,11 +24,11 @@ function getStateFromSocket(data) {
     rhine: { temp: data.rhine && data.rhine.temperature ? data.rhine.temperature : "–" },
     air: {
       co2: data.netatmo && data.netatmo.co2 ? data.netatmo.co2 : "–",
-      text: data.netatmo.yaayCo2Text
+      text: data.netatmo && data.netatmo.yaayCo2Text ? data.netatmo.yaayCo2Text : "–"
     },
     noise: {
       level: data.netatmo && data.netatmo.noise ? data.netatmo.noise : "–",
-      text: data.netatmo.yaayNoiseText
+      text: data.netatmo && data.netatmo.yaayNoiseText ? data.netatmo.yaayNoiseText : "–"
     }
   };
 };
@@ -59,7 +53,7 @@ function getTransportInMin(departure) {
   return Math.round((departure.getTime()-appTime.getTime())/60000);
 }
 
-var YaayDatavizApp = React.createClass({
+var YaayDatavisApp = React.createClass({
 
   getInitialState: function() {
     return getPlaceholderState();
@@ -83,20 +77,7 @@ var YaayDatavizApp = React.createClass({
 
   render: function() {
   	return (
-  	  <section>
-        <div className="row" style={rowStyle}>
-          <Weather text={this.state.weather.text} icon={this.state.weather.icon} temp={this.state.weather.temp} />
-          <Transport minutes={this.state.transport.minutes} />
-        </div>
-        <div className="row" style={rowStyle}>
-          <Watch hours={this.state.watch.hours} minutes={this.state.watch.minutes} />
-          <Rhine temp={this.state.rhine.temp}  />
-        </div>
-        <div className="row" style={rowStyle}>
-          <Air co2={this.state.air.co2} text={this.state.air.text} />
-          <Noise level={this.state.noise.level} text={this.state.noise.text} />
-        </div>
-      </section>
+  	  <YaayDatavis data={this.state}/>
   	);
   },
 
@@ -118,4 +99,4 @@ var YaayDatavizApp = React.createClass({
 
 });
 
-module.exports = YaayDatavizApp;
+module.exports = YaayDatavisApp;
