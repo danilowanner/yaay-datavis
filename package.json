@@ -8,9 +8,9 @@
     "socket.io-client": "~1.3.5"
   },
   "devDependencies": {
-    "browserify": "~6.0.3",
+    "browserify": "^12.0.1",
     "reactify": "~1.1.0",
-    "uglify-js": "~2.4.17",
+    "uglify-js": "^2.4.24",
     "watchify": "~2.4.0"
   },
   "browserify": {
@@ -21,7 +21,7 @@
   "scripts": {
     "watch": "watchify src/app.js -o public/js/yaay-datavis.js -v",
     "browserify": "browserify src/app.js | uglifyjs --compress > public/js/yaay-datavis.min.js",
-    "build": "npm run browserify "
+    "build": "NODE_ENV=production npm run browserify "
   },
   "author": "Danilo Wanner",
   "license": "MIT"
