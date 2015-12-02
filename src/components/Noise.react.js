@@ -6,10 +6,19 @@ var Noise = React.createClass({
 	textStyle: { marginTop: '1.5em' },
 
 	render: function(){
+
+		var icon = "icon-sound-silent"
+		if (this.props.level>45) {
+			icon = "icon-sound-medium"
+		}
+		else if(this.props.level>55){
+			icon = "icon-sound-loud"
+		}
+
   	return (
   	  <div>
 			<div className="col col-1 col-height-1 col-salmon col-lg-offset-1">
-				<div className="icon-sound-medium center" style={this.iconStyle}></div>
+				<div className={icon + " center"} style={this.iconStyle}></div>
 				<span className="center" style={this.textStyle}>{this.props.level} dB</span>
 			</div>
 			<div className="col col-1 col-height-1 col-white">
