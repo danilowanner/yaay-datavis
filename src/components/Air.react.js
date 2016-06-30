@@ -8,7 +8,7 @@ var Air = React.createClass({
 	render: function(){
   	return (
   	  <div>
-    	  <div className="col col-1 col-height-1 col-blue col-lg-offset-1">
+    	  <div className="col col-1 col-height-1 col-cream-gold col-lg-offset-1">
     	    <div className="icon-co2 center" style={this.iconStyle}></div>
     	    <span className="center" style={this.textStyle}>{this.props.co2} ppm CO₂</span>
     	  </div>

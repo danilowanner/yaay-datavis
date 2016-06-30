@@ -9,7 +9,7 @@ var Rhine = React.createClass({
 		var iconClass = this.props.temp > 18 ? "icon-rhein-warm" : "icon-rhein-cold";
   	return (
   	  <div>
-    	  <div className="col col-1 col-height-1 col-mint col-lg-offset-2 ">
+    	  <div className="col col-1 col-height-1 col-cream-gold col-lg-offset-2 ">
     	    <div className={iconClass+" center"} style={this.iconStyle}></div>
     	    <span className="center" style={this.textStyle}>{this.props.temp}° C</span>
     	  </div>

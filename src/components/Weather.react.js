@@ -11,7 +11,7 @@ var Weather = React.createClass({
       	<div className="col col-1 col-height-1 col-white col-lg-offset-1">
       		<span className="center">{this.props.text}</span>
       	</div>
-      	<div className="col col-1 col-height-1 col-mint">
+      	<div className="col col-1 col-height-1 col-cream-gold">
       	  <div className={"icon-"+this.props.icon+" center"} style={this.iconStyle}></div>
       	  <span className="center" style={this.textStyle}>{this.props.temp}° C</span>
       	</div>

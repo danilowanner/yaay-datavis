@@ -17,7 +17,7 @@ var Noise = React.createClass({
 
   	return (
   	  <div>
-			<div className="col col-1 col-height-1 col-salmon col-lg-offset-1">
+			<div className="col col-1 col-height-1 col-cream-gold col-lg-offset-1">
 				<div className={icon + " center"} style={this.iconStyle}></div>
 				<span className="center" style={this.textStyle}>{this.props.level} dB</span>
 			</div>

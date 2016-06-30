@@ -17,7 +17,7 @@ var Transport = React.createClass({
 
   	return (
   	  <div>
-      	<div className="col col-1 col-height-1 col-blue col-lg-offset-2 ">
+      	<div className="col col-1 col-height-1 col-cream-gold col-lg-offset-2 ">
       	  <div className={"icon-tram center"+blinkClass} style={this.iconStyle}></div>
       	  <span className={"center"} style={this.textStyle}>{timeText}</span>
       	</div>
